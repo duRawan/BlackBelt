@@ -1,10 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 import requests
 
 # Create your views here.
 
 def index(request):
-    
+
     url = 'https://www.virustotal.com/vtapi/v2/url/scan' #Scan the URL
 
     params = {'apikey': '6c72dc928ae0eb65656cbdc4a9898ba4b8ba8073acdcb45659911648640b5fd4', 'url':'www.google.com'}
