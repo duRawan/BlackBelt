@@ -25,6 +25,14 @@ SECRET_KEY = '609f2=1+#s$s_or8^qxjba87gu#=zs7f=r2owc2e)rv5&6(xm4'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+EMAIL_HOST = 'smtp.gmail.com'
+# DEFAULT_FROM_EMAIL = 'vsecure4@gmail.com'
+EMAIL_HOST_USER = 'vsecure4@gmail.com'
+EMAIL_HOST_PASSWORD = 'Rrdsm@123'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
 ALLOWED_HOSTS = []
 
 
@@ -74,16 +82,16 @@ WSGI_APPLICATION = 'BlackBelt.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 
-DATABASES = {
-   'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'postgres',#change it to the database name
-        'USER': 'postgres',
-        'PASSWORD': '*****',
-        'HOST': '127.0.0.1',
-        'PORT': '5433',
-    }
-}
+# DATABASES = {
+#    'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'postgres',#change it to the database name
+#         'USER': 'postgres',
+#         'PASSWORD': '*****',
+#         'HOST': '127.0.0.1',
+#         'PORT': '5433',
+#     }
+# }
 
 
 # Password validation

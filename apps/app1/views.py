@@ -1,5 +1,8 @@
 from django.shortcuts import render, redirect
 import requests
+from .forms import ContactForm
+from django.core.mail import send_mail
+from django.conf import settings
 
 # Create your views here.
 
@@ -22,3 +25,34 @@ def index(request):
     print(response2.json())
 
     return redirect("/")
+
+def contactview(request):
+    name=''
+    email=''
+    comment=''
+
+
+    form= ContactForm(request.POST or None)
+    if form.is_valid():
+        name= form.cleaned_data.get("name")
+        email= form.cleaned_data.get("email")
+        comment=form.cleaned_data.get("comment")
+
+        if request.user.is_authenticated():
+            subject= str(request.user) + "'s Comment"
+        else:
+            subject= "A Visitor's Comment"
+
+
+        comment= name + " with the email, " + email + ", sent the following message:\n\n" + comment
+        send_mail(subject, comment, settings.EMAIL_HOST_USER, ['vsecure4@gmail.com'])
+
+
+        context= {'form': form}
+        # return
+        render(request, 'app1/contact.html', context)
+        return redirect("/contact")
+
+    else:
+        context= {'form': form}
+        return render(request, 'app1/contact.html', context)
